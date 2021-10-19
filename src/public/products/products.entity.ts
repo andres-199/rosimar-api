@@ -1,54 +1,53 @@
-import { Table, Model, Column, DataType, HasMany, BelongsTo } from 'sequelize-typescript'
-import { Offer } from '../offers/offers.entity'
-import { Brand } from '../brands/brands.entity'
-import { Categori } from '../categories/categories.entity'
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  HasMany,
+  BelongsTo,
+} from 'sequelize-typescript';
+import { Offer } from '../offers/offers.entity';
+import { Brand } from '../brands/brands.entity';
+import { Category } from '../categories/categories.entity';
 
 @Table({
-	schema: 'public',
-	tableName: 'products',
+  schema: 'public',
+  tableName: 'products',
 })
-
 export class Product extends Model<Product> {
-
-	@Column({
-  	type: DataType.INTEGER,
-  	autoIncrement: true,
-  	primaryKey: true,
-  	unique: true,
-  	field: 'id',
-	})
-	id: number
-
-
+  @Column({
+    type: DataType.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+    unique: true,
+    field: 'id',
+  })
+  id: number;
 
   @Column
-	name: string
+  name: string;
 
   @Column
-	description: string
+  description: string;
 
   @Column
-	brand_id: number
+  brand_id: number;
 
   @Column
-	category_id: number
+  category_id: number;
 
   @Column
-	createdAt: Date
+  createdAt: Date;
 
   @Column
-	updatedAt: Date
+  updatedAt: Date;
 
+  @BelongsTo(() => Brand, { foreignKey: 'brand_id', as: 'Brand' })
+  Brand: Brand;
 
-	@BelongsTo(() => Brand, { foreignKey: 'brand_id', as: 'Brand'})
-	Brand: Brand
-
-	@BelongsTo(() => Categori, { foreignKey: 'category_id', as: 'Categori'})
-	Categori: Categori
-
+  @BelongsTo(() => Category, { foreignKey: 'category_id', as: 'Category' })
+  Category: Category;
 
   @HasMany(() => Offer, { as: 'Offer', foreignKey: 'product_id' })
-	Offer: Offer[]
-
-
+  Offer: Offer[];
 }

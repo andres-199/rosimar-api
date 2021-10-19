@@ -10,7 +10,7 @@ export class CategoriesMiddleware implements NestMiddleware {
   ) {}
 
   use(req: any, res: any, next: () => void) {
-    const model = this.sequelize.models.Categori;
+    const model = this.sequelize.models.Category;
     if (model) {
       this.commonService.model = model;
       next();

@@ -1,43 +1,48 @@
-import { Table, Model, Column, DataType, HasMany } from 'sequelize-typescript'
-import { Product } from '../products/products.entity'
+import {
+  Table,
+  Model,
+  Column,
+  DataType,
+  HasMany,
+  BelongsTo,
+} from 'sequelize-typescript';
+import { Product } from '../products/products.entity';
 
 @Table({
-	schema: 'public',
-	tableName: 'categories',
+  schema: 'public',
+  tableName: 'categories',
 })
-
-export class Categori extends Model<Categori> {
-
-	@Column({
-  	type: DataType.INTEGER,
-  	autoIncrement: true,
-  	primaryKey: true,
-  	unique: true,
-  	field: 'id',
-	})
-	id: number
-
-
+export class Category extends Model<Category> {
+  @Column({
+    type: DataType.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+    unique: true,
+    field: 'id',
+  })
+  id: number;
 
   @Column
-	name: string
+  name: string;
 
   @Column({ type: DataType.JSON })
-	images: JSON
+  images: JSON;
 
   @Column
-	is_primary: boolean
+  is_primary: boolean;
 
   @Column
-	createdAt: Date
+  createdAt: Date;
 
   @Column
-	updatedAt: Date
+  updatedAt: Date;
 
+  @Column
+  category_id: number;
 
+  @BelongsTo(() => Category, { as: 'Category', foreignKey: 'category_id' })
+  Category: Category;
 
   @HasMany(() => Product, { as: 'Product', foreignKey: 'category_id' })
-	Product: Product[]
-
-
+  Product: Product[];
 }
