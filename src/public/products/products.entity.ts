@@ -37,10 +37,16 @@ export class Product extends Model<Product> {
   category_id: number;
 
   @Column
+  primary_category_id: number;
+
+  @Column
   createdAt: Date;
 
   @Column
   updatedAt: Date;
+
+  @Column({ type: DataType.JSON })
+  images: JSON;
 
   @BelongsTo(() => Brand, { foreignKey: 'brand_id', as: 'Brand' })
   Brand: Brand;

@@ -9,4 +9,9 @@ export class CategoriesService {
     const { Category } = this.sequelize.models;
     return Category.findAll({ where: { is_primary: true } });
   }
+
+  findAllSubcategories(categoryId: number) {
+    const { Category } = this.sequelize.models;
+    return Category.findAll({ where: { category_id: categoryId } });
+  }
 }

@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 
 @Controller()
@@ -8,5 +8,10 @@ export class CategoriesController {
   @Get('primary')
   findAllPrimary() {
     return this.categoriesService.findAllPrimary();
+  }
+
+  @Get(':categoryId/subcategories')
+  findAllSubcategories(@Param('categoryId') categoryId: number) {
+    return this.categoriesService.findAllSubcategories(categoryId);
   }
 }
