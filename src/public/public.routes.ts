@@ -1,8 +1,9 @@
-import { Routes } from 'nest-router'
+import { Routes } from 'nest-router';
 import { BrandsModule } from './brands/brands.module';
 import { CategoriesModule } from './categories/categories.module';
 import { CompanyModule } from './company/company.module';
 import { ContactModule } from './contact/contact.module';
+import { ImagesModule } from './images/images.module';
 import { OffersModule } from './offers/offers.module';
 import { PasswordRecoveriesModule } from './password-recoveries/password-recoveries.module';
 import { PersonsModule } from './persons/persons.module';
@@ -21,4 +22,5 @@ export const publicRoutes: Routes = [
   { path: 'products', module: ProductsModule },
   { path: 'roles', module: RolesModule },
   { path: 'users', module: UsersModule },
+  { path: 'images', module: ImagesModule },
 ];
