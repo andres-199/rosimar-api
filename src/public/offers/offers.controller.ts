@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { OffersService } from './offers.service';
 
 @Controller()
@@ -8,5 +8,10 @@ export class OffersController {
   @Get()
   findAll() {
     return this.offerService.findAll();
+  }
+
+  @Get('multiple/:limit')
+  findMultiple(@Param('limit') limit: number) {
+    return this.offerService.findMultiple(limit);
   }
 }

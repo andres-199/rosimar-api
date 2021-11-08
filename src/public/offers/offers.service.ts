@@ -9,4 +9,9 @@ export class OffersService {
     const { Offer } = this.sequelize.models;
     return Offer.findAll({ include: ['Product'] });
   }
+
+  findMultiple(limit: number) {
+    const { Offer } = this.sequelize.models;
+    return Offer.findAll({ include: ['Product'], limit });
+  }
 }
