@@ -1,6 +1,6 @@
 const dbConfig = {
   dialect: 'postgres',
-  host: 'rosimar.com.co',
+  host: 'localhost',
   port: 5432,
   username: 'postgres',
   password: 'rosimar',
