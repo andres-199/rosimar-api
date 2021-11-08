@@ -13,13 +13,11 @@ export class ImagesController {
   constructor(private imagesService: ImagesService) {}
 
   @Get('one/:name')
-  @UseGuards(JwtAuthGuard)
   findOne(@Param('name') name: string) {
     return this.imagesService.findOne(name);
   }
 
   @Get(':name')
-  @UseGuards(JwtAuthGuard)
   findMultiple(@Param('name') name: string) {
     return this.imagesService.findMultiple(name);
   }
