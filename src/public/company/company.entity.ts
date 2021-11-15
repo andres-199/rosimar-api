@@ -1,39 +1,34 @@
-import { Table, Model, Column, DataType } from 'sequelize-typescript'
+import { Table, Model, Column, DataType } from 'sequelize-typescript';
 
 @Table({
-	schema: 'public',
-	tableName: 'company',
+  schema: 'public',
+  tableName: 'company',
 })
-
 export class Company extends Model<Company> {
-
-	@Column({
-  	type: DataType.INTEGER,
-  	autoIncrement: true,
-  	primaryKey: true,
-  	unique: true,
-  	field: 'id',
-	})
-	id: number
-
-
+  @Column({
+    type: DataType.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+    unique: true,
+    field: 'id',
+  })
+  id: number;
 
   @Column
-	mision: string
+  mision: string;
 
   @Column
-	vision: string
+  vision: string;
 
   @Column
-	corporate_values: string
+  corporate_values: string;
 
   @Column
-	createdAt: Date
+  createdAt: Date;
 
   @Column
-	updatedAt: Date
+  updatedAt: Date;
 
-
-
-
+  @Column({ type: DataType.JSON })
+  images: JSON;
 }
