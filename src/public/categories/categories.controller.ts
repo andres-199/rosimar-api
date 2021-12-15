@@ -14,4 +14,14 @@ export class CategoriesController {
   findAllSubcategories(@Param('categoryId') categoryId: number) {
     return this.categoriesService.findAllSubcategories(categoryId);
   }
+
+  @Get(':categoryId/products')
+  findAllProducts(@Param('categoryId') categoryId: number) {
+    return this.categoriesService.findAllProducts(categoryId);
+  }
+
+  @Get(':categoryId/products/brands')
+  findAllBrands(@Param('categoryId') categoryId: number) {
+    return this.categoriesService.findAllBrands(categoryId);
+  }
 }

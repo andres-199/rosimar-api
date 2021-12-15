@@ -9,4 +9,11 @@ export class ProductsService {
     const { Product } = this.sequelize.models;
     return Product.findAll({ include: ['Brand', 'Category'] });
   }
+
+  findAllOffers() {
+    const { Product } = this.sequelize.models;
+    return Product.findAll({
+      include: [{ association: 'Offer', required: true }],
+    });
+  }
 }

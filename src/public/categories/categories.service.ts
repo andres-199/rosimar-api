@@ -14,4 +14,40 @@ export class CategoriesService {
     const { Category } = this.sequelize.models;
     return Category.findAll({ where: { category_id: categoryId } });
   }
+
+  findAllProducts(categoryId: number) {
+    const { Product } = this.sequelize.models;
+
+    return Product.findAll({
+      include: [
+        {
+          association: 'Category',
+          where: { category_id: categoryId },
+          required: true,
+          attributes: [],
+        },
+      ],
+    });
+  }
+
+  findAllBrands(categoryId: number) {
+    const { Brand } = this.sequelize.models;
+    return Brand.findAll({
+      include: [
+        {
+          association: 'Product',
+          required: true,
+          attributes: [],
+          include: [
+            {
+              association: 'Category',
+              attributes: [],
+              where: { category_id: categoryId },
+              required: true,
+            },
+          ],
+        },
+      ],
+    });
+  }
 }

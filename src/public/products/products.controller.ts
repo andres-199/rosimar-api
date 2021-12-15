@@ -9,4 +9,9 @@ export class ProductsController {
   findAll() {
     return this.productService.findAll();
   }
+
+  @Get('offers')
+  findAllOffers() {
+    return this.productService.findAllOffers();
+  }
 }

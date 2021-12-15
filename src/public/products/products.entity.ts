@@ -45,6 +45,12 @@ export class Product extends Model<Product> {
   @Column
   updatedAt: Date;
 
+  @Column
+  quantity: number;
+
+  @Column
+  unit: string;
+
   @Column({ type: DataType.JSON })
   images: JSON;
 
