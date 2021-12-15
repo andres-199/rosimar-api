@@ -45,4 +45,7 @@ export class Category extends Model<Category> {
 
   @HasMany(() => Product, { as: 'Product', foreignKey: 'category_id' })
   Product: Product[];
+
+  @HasMany(() => Category, { as: 'Categories', foreignKey: 'category_id' })
+  Categories: Category[];
 }

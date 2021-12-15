@@ -16,4 +16,23 @@ export class ProductsService {
       include: [{ association: 'Offer', required: true }],
     });
   }
+
+  findPrimaryCategory(productId: number) {
+    const { Category } = this.sequelize.models;
+    return Category.findOne({
+      include: [
+        {
+          association: 'Categories',
+          required: true,
+          include: [
+            {
+              association: 'Product',
+              where: { id: productId },
+              required: true,
+            },
+          ],
+        },
+      ],
+    });
+  }
 }
