@@ -31,4 +31,22 @@ export class Company extends Model<Company> {
 
   @Column({ type: DataType.JSON })
   images: JSON;
+
+  @Column
+  monday_to_friday: string;
+
+  @Column
+  saturday: string;
+
+  @Column
+  phone: string;
+
+  @Column
+  whatsapp: string;
+
+  @Column
+  direction: string;
+
+  @Column
+  email: string;
 }
